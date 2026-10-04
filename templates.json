@@ -1,10 +1,9 @@
 {
-  "version": "3",
   "templates": [
     {
-      "type": 3,
-      "title": "PostgreSQL 16",
-      "description": "Postgres 16 (alpine) on the external proxy network, with optional Watchtower updates.",
+      "type": 1,
+      "title": "PostgreSQL",
+      "description": "Postgres (alpine) on the external proxy network, with optional Watchtower updates.",
       "note": "The external Docker network <b>proxy</b> must already exist.",
       "categories": ["Database"],
       "platform": "linux",
@@ -14,11 +13,11 @@
         "stackfile": "stacks/postgres/docker-compose.yml"
       },
       "env": [
-        { "name": "PROJECT_NAME", "label": "Project name", "default": "myproject" },
+        { "name": "PROJECT_NAME", "label": "Project name", "default": "${PROJECT_NAME}-psql" },
         { "name": "POSTGRES_USER", "label": "Postgres user", "default": "postgres" },
         { "name": "POSTGRES_PASSWORD", "label": "Postgres password" },
         { "name": "POSTGRES_DB", "label": "Database name", "default": "app" },
-        { "name": "VOLUME_PATH", "label": "Host volume path", "default": "/srv/myproject" },
+        { "name": "VOLUME_PATH", "label": "Host volume path", "default": "/data/${PROJECT_NAME}" },
         {
           "name": "ENABLE_WATCHTOWER",
           "label": "Enable Watchtower",
